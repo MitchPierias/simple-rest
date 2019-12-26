@@ -12,7 +12,6 @@ provider:
    - Effect: "Allow"
      Action:
         - dynamodb:Scan
-        - dynamodb:GetItem
      Resource: !GetAtt JobTable.Arn
 
 # You can define service wide environment variables here, accessed through `Process.env['NAME_OF_VAR']`
