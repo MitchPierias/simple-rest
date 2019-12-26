@@ -13,7 +13,8 @@
   "devDependencies": {
     "aws-sdk": "^2.596.0",
     "serverless": "^1.60.4",
-    "serverless-offline": "^5.12.1"
+    "serverless-offline": "^5.12.1",
+    "serverless-plugin-webpack": "^1.5.1"
   },
   "license": "MIT"
 }

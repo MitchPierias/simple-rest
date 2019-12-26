@@ -41,13 +41,13 @@ Create a basic serverless AWS with NodeJS project within the current directory
 serverless create --template aws-nodejs
 ```
 
-Open the project in your IDE and change your `handler.js` file to `handler.ts`
+Install all the required node modules
 
 ```
-yarn add -D serverless-plugin-typescript serverless-offline aws-sdk typescript
+yarn add -D aws-sdk
 ```
 
-## Configuring the Serverless template
+## Configuring the CloudFormation template
 
 Serverless uses `YAML` or `json` to configure it's deployment template. This looks much the same as a CloudFormation template, infact it's identical apart from the three lines below. You can imagine YAML like a JSON object, where the indentation signifies another level into the object tree and the `-` represent the beginning of an array value. These are specific to serverless and allow the deployment scripts to generate unique names and store references and such against your serverless account. The `service` becomes the prefixing name of your microservice which is defined later in the `functions` key, the `app` should be the name of your application on the serverless network and `org` is basically your username on that network.
 
