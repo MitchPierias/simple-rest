@@ -1,0 +1,19 @@
+{
+  "name": "simple-rest",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Simple serverless REST service",
+  "main": "helper.ts",
+  "author": "Mitch Pierias <github.com/MitchPierias>",
+  "scripts": {
+    "start": "serverless start --serverless-offline",
+    "deploy": "serverless deploy",
+    "kill": "serverless remove"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.596.0",
+    "serverless": "^1.60.4",
+    "serverless-offline": "^5.12.1"
+  },
+  "license": "MIT"
+}

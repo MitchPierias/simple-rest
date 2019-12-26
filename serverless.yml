@@ -1,0 +1,53 @@
+service: simple-rest
+app: simple-rest
+org: mitchpierias # If you setup a serverless account, this is your username
+# AWS environment setup
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: ap-southeast-2 # Deploys to Sydney
+  # Define permission this lambda has to access other AWS services
+  iamRoleStatements:
+   - Effect: "Allow"
+     Action:
+        - dynamodb:Scan
+        - dynamodb:GetItem
+     Resource: !GetAtt JobTable.Arn
+
+# You can define service wide environment variables here, accessed through `Process.env['NAME_OF_VAR']`
+#  environment:
+#    NAME_OF_VAR: value1
+
+# Webpack will package any required `node_modules`
+package:
+ exclude:
+   - node_modules
+   - .gitignore
+   - README.md
+   - yarn.lock
+   - s_jobs.js
+# The services, handler and event they will respond too
+functions:
+  jobs:
+    handler: handler.getJobs
+    events:
+      - http:
+          path: /
+          method: get
+# Create our DynamoDB table
+resources:
+  Resources:
+    JobTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: jobs
+        KeySchema:
+          - AttributeName: UUID
+            KeyType: HASH
+        AttributeDefinitions:
+          - AttributeName: UUID
+            AttributeType: S
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 2
