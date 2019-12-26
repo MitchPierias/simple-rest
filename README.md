@@ -71,7 +71,6 @@ provider:
    - Effect: "Allow"
      Action:
         - dynamodb:Scan
-        - dynamodb:GetItem
      Resource: !GetAtt JobTable.Arn
 ```
 
